@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS patients (
     weight REAL,
     diagnosis TEXT,
     status TEXT,
-    mobile TEXT
+    mobile TEXT,
+    symptoms TEXT
 )
 """)
 conn.commit()
@@ -35,6 +36,7 @@ class Patient(BaseModel):
     diagnosis : Annotated[str, Field(..., description = " of the patient ( example - 001)")]
     status: Annotated[Literal['ongoing', 'over'], Field(..., description="Treatment status")]
     mobile: Annotated[str, Field(..., min_length=10, max_length=10, description="10 digit mobile number")]
+    symptoms: Annotated[str, Field(..., description="Selected symptoms (comma separated)")]
 
     @computed_field
     @property
@@ -63,6 +65,7 @@ class PatientUpdate(BaseModel):
     diagnosis: Optional[str] = None
     status: Optional[Literal['ongoing', 'over']] = None
     mobile: Optional[str] = Field(default=None, min_length=10, max_length=10)
+    symptoms: Optional[str] = None
 
 
 
@@ -70,7 +73,7 @@ class PatientUpdate(BaseModel):
 def add_patient(patient: Patient):
     try:
         cursor.execute("""
-        INSERT INTO patients VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO patients VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             patient.id,
             patient.name,
@@ -81,7 +84,8 @@ def add_patient(patient: Patient):
             patient.weight,
             patient.diagnosis,
             patient.status,
-            patient.mobile
+            patient.mobile,
+            patient.symptoms
         ))
         conn.commit()
         return {"message": "Patient added successfully"}
@@ -107,7 +111,8 @@ def get_patient(patient_id: str):
         weight=row[6],
         diagnosis=row[7],
         status=row[8],
-        mobile=row[9]
+        mobile=row[9],
+        symptoms=row[10]
     )
 
 
@@ -118,9 +123,17 @@ def get_all_patients():
 
     return [
         Patient(
-            id=r[0], name=r[1], age=r[2], gender=r[3],
-            city=r[4], height=r[5], weight=r[6],
-            diagnosis=r[7], status=r[8], mobile=r[9]
+            id=r[0],
+            name=r[1],
+            age=r[2],
+            gender=r[3],
+            city=r[4],
+            height=r[5],
+            weight=r[6],
+            diagnosis=r[7],
+            status=r[8],
+            mobile=r[9],
+            symptoms=r[10]
         )
         for r in rows
     ]
@@ -158,5 +171,3 @@ def delete_patient(patient_id: str):
     conn.commit()
 
     return {"message": "Patient deleted successfully"}
-
-
