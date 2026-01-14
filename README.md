@@ -11,7 +11,7 @@ The system combines:
     
 -   Machine Learning–based disease prediction
     
--   Planned AI-powered natural language querying
+-   AI-powered natural language querying
     
 <img width="1914" height="883" alt="image" src="https://github.com/user-attachments/assets/95e56dd4-4de4-4e7f-8477-296a8bee2ca0" />
 
