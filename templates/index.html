@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="hero">
+    <h1>Patient Management System</h1>
+    <p>Manage patients • Predict disease • Query database using AI</p>
+</div>
+
+<div class="card-grid">
+
+    <a href="/add" class="card">
+        <h2>➕ Add Patient</h2>
+        <p>Register new patient with symptoms</p>
+    </a>
+
+    <a href="/update" class="card">
+        <h2>✏️ Update Patient</h2>
+        <p>Edit patient records using ID</p>
+    </a>
+
+    <a href="/view" class="card">
+        <h2>👁️ View Patients</h2>
+        <p>Search or view all patients</p>
+    </a>
+
+    <a href="/assistant" class="card">
+        <h2>🤖 AI Assistant</h2>
+        <p>Ask database in natural language</p>
+    </a>
+
+</div>
+
+{% endblock %}

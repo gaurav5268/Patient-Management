@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Patient</h2>
+
+<form id="addForm">
+  <input name="id" placeholder="ID"><br>
+  <input name="name" placeholder="Name"><br>
+  <input name="age" type="number" placeholder="Age"><br>
+  <input name="gender" placeholder="Gender"><br>
+  <input name="city" placeholder="City"><br>
+  <input name="height" placeholder="Height"><br>
+  <input name="weight" placeholder="Weight"><br>
+  <input name="status" placeholder="Status"><br>
+  <input name="mobile" placeholder="Mobile"><br>
+  <input name="symptoms" placeholder="Symptoms (comma separated)"><br>
+
+  <button type="button" onclick="submitPatient()">Save</button>
+</form>
+
+<pre id="result"></pre>
+
+<script src="/static/script.js"></script>
+{% endblock %}

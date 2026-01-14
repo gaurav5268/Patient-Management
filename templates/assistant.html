@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>AI Database Assistant</h2>
+
+<div class="chat-box" id="chatBox"></div>
+
+<input id="userInput" placeholder="Ask something like: Show all patients above age 30">
+<button onclick="sendQuery()">Ask</button>
+
+<script src="/static/script.js"></script>
+{% endblock %}

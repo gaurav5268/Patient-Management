@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Patient Profile</h2>
+
+<div class="card">
+  <p><b>ID:</b> {{ patient.id }}</p>
+  <p><b>Name:</b> {{ patient.name }}</p>
+  <p><b>Age:</b> {{ patient.age }}</p>
+  <p><b>Gender:</b> {{ patient.gender }}</p>
+  <p><b>City:</b> {{ patient.city }}</p>
+  <p><b>Status:</b> {{ patient.status }}</p>
+  <p><b>Mobile:</b> {{ patient.mobile }}</p>
+  <p><b>Symptoms:</b> {{ patient.symptoms }}</p>
+</div>
+
+<hr>
+
+<h3>ML Disease Prediction</h3>
+<button onclick="predictDisease('{{ patient.symptoms }}')">
+  Predict Disease
+</button>
+
+<pre id="prediction"></pre>
+
+<script src="/static/script.js"></script>
+
+{% endblock %}

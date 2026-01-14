@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Update Patient</h2>
+
+<input id="pid" placeholder="Enter Patient ID">
+<button onclick="loadPatient()">Load</button>
+
+<div id="updateForm" style="display:none">
+  <input id="name" placeholder="Name">
+  <input id="city" placeholder="City">
+  <button onclick="updatePatient()">Update</button>
+</div>
+
+<pre id="result"></pre>
+
+<script src="/static/script.js"></script>
+{% endblock %}

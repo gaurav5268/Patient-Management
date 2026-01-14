@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>View Patient</h2>
+
+<input id="vid" placeholder="Enter Patient ID">
+<button onclick="viewPatient()">Search</button>
+
+<div id="result"></div>
+
+<script src="/static/script.js"></script>
+{% endblock %}

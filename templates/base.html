@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Management System</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🩺 Patient Manager</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/add">Add Patient</a>
+            <a href="/view">View</a>
+            <a href="/update">Update</a>
+            <a href="/assistant">Assistant</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 Patient Management System</p>
+        <p>Need help? <a href="mailto:support@patientapp.com">Contact Support</a></p>
+    </footer>
+
+</body>
+</html>
