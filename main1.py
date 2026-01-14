@@ -219,6 +219,7 @@ def delete_patient(patient_id: str):
     conn.commit()
 
     return {"message": "Patient deleted successfully"}
+<<<<<<< HEAD:main1.py
 
 # ---------------- Extra APIs ----------------
 @app.get("/symptoms")
@@ -252,3 +253,5 @@ def predict(req: SymptomRequest):
         "predicted_disease": disease,
         "confidence": round(confidence * 100, 2)
     }
+=======
+>>>>>>> 3047fbcc349ef81f1f888232f6510b2f73cfd20f:main.py

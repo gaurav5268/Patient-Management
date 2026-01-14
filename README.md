@@ -5,7 +5,11 @@
 This project is a **Patient Management System** that combines:
 - Patient database management (CRUD operations)
 - Machine Learning for disease prediction using symptoms
+<<<<<<< HEAD
 - FIntegration of NLP + LLM for intelligent chat-based data retrieval
+=======
+- Future integration of NLP + LLM for intelligent chat-based data retrieval
+>>>>>>> 3047fbcc349ef81f1f888232f6510b2f73cfd20f
 
 The goal is to build a **realistic healthcare-style backend system** where patient records are managed efficiently and smart intelligence is added using ML and AI.
 
