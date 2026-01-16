@@ -66,27 +66,69 @@ async function predictDisease(symptomsStr) {
     "Predicted Disease: " + data.predicted_disease +
     "\nConfidence: " + data.confidence + "%";
 }
-
 async function sendQuery() {
-  const input = document.getElementById("userInput").value;
-  if (!input) return;
+    const input = document.getElementById("userInput");
+    const chatBox = document.getElementById("chatBox");
 
-  const chat = document.getElementById("chatBox");
-  chat.innerHTML += `<p><b>You:</b> ${input}</p>`;
+    const question = input.value.trim();
+    if (!question) return;
 
-  const res = await fetch("/chat-db", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ question: input })
-  });
+    chatBox.innerHTML = `<p class="hint">Thinking...</p>`;
 
-  const data = await res.json();
+    const response = await fetch("/chat-db", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question })
+    });
 
-  chat.innerHTML += `<p><b>AI:</b> ${data.response_text}</p>`;
+    const data = await response.json();
+    console.log(data);  // keep this for now
 
-  if (data.rows.length > 0) {
-    chat.innerHTML += `<pre>${JSON.stringify(data.rows, null, 2)}</pre>`;
-  }
+    // Clean layout
+    let html = `
+        <div class="message">
+            <div class="bubble user"><strong>You:</strong> ${data.question}</div>
+            <div class="bubble ai"><strong>AI:</strong> ${data.response_text}</div>
+        </div>
+    `;
 
-  document.getElementById("userInput").value = "";
+    // Always use rows only for table
+    if (Array.isArray(data.rows) && data.rows.length > 0) {
+        html += createTable(data.rows);
+    }
+
+    chatBox.innerHTML = html;
+    input.value = "";
+}
+
+
+function createTable(rows) {
+    const columns = Object.keys(rows[0]);
+
+    let table = `
+        <div class="table-container">
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        ${columns.map(col => `<th>${col}</th>`).join("")}
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    rows.forEach(row => {
+        table += `
+            <tr>
+                ${columns.map(col => `<td>${row[col]}</td>`).join("")}
+            </tr>
+        `;
+    });
+
+    table += `
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    return table;
 }

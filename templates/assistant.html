@@ -1,12 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>AI Database Assistant</h2>
 
-<div class="chat-box" id="chatBox"></div>
+<div class="assistant-container">
 
-<input id="userInput" placeholder="Ask something like: Show all patients above age 30">
-<button onclick="sendQuery()">Ask</button>
+    <h2 class="assistant-title">🤖 AI Database Assistant</h2>
+
+    <!-- Input Section -->
+    <div class="assistant-input-box">
+        <input 
+            id="userInput" 
+            placeholder="Ask something like: Show all patients above age 30" 
+        />
+        <button onclick="sendQuery()">Send</button>
+    </div>
+
+    <!-- Results Section -->
+    <div class="assistant-results" id="chatBox">
+        <p class="hint">Your results will appear here...</p>
+    </div>
+
+</div>
 
 <script src="/static/script.js"></script>
+
 {% endblock %}

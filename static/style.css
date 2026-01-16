@@ -88,3 +88,70 @@ body {
     color: #ffcc80;
     text-decoration: none;
 }
+
+.assistant-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.assistant-input-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.assistant-input-box input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.assistant-input-box button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.assistant-input-box button:hover {
+  background: #1e40af;
+}
+
+.bubble {
+  padding: 12px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.bubble.user {
+  background: #e0f2fe;
+}
+
+.bubble.ai {
+  background: #f1f5f9;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.result-table th, .result-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.result-table th {
+  background: #f3f4f6;
+}
